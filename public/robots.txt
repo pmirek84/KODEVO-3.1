@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.kodevo.pl/sitemap.xml
+
+# Disallow access to specific files and directories
+Disallow: /private/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
+
+# Crawl-delay
+Crawl-delay: 10

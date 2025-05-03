@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('/fonts/CenturyGothic.woff2') format('woff2'),
+       url('/fonts/CenturyGothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('/fonts/CenturyGothic-Bold.woff2') format('woff2'),
+       url('/fonts/CenturyGothic-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --color-1: 180 100% 50%;
+    --color-2: 185 100% 50%;
+    --color-3: 175 100% 50%;
+    --color-4: 190 100% 50%;
+    --color-5: 180 100% 50%;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-['Century_Gothic'] overflow-x-hidden;
+  }
+  html {
+    @apply overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .btn-kodevo {
+    @apply relative overflow-hidden bg-[#00E5FF] text-[#0C1E25] px-6 py-2 rounded-full font-semibold 
+           transition-all duration-300 transform hover:scale-105 hover:shadow-glow active:scale-95;
+  }
+
+  .btn-kodevo::before {
+    @apply content-[''] absolute inset-0 bg-[#00E5FF];
+    animation: glitch 2s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .btn-kodevo::after {
+    @apply content-[''] absolute inset-0 bg-white mix-blend-overlay;
+    animation: glitch 2s infinite reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .btn-kodevo-large {
+    @apply btn-kodevo px-8 py-4 text-lg;
+  }
+
+  .btn-kodevo-content {
+    @apply relative z-10 flex items-center justify-center gap-2;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+    transform: translate(-3px);
+  }
+  40% {
+    clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+    transform: translate(3px);
+  }
+  60% {
+    clip-path: polygon(0 2%, 100% 0, 100% 98%, 0 100%);
+    transform: translate(-3px);
+  }
+  80% {
+    clip-path: polygon(0 0, 100% 2%, 100% 100%, 0 98%);
+    transform: translate(3px);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translate(0);
+  }
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
